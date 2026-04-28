@@ -1,0 +1,23 @@
+title: Multiple Failed Logons
+id: f6a5c440-9117-4919-b7b3-753bc5d3551a
+status: experimental
+description: Detects 5 or more failed logons within 60 seconds from the same source IP
+references:
+    - https://attack.mitre.org/techniques/T1110/
+author: Sidharth
+date: 2026/04/27
+tags:
+    - attack.credential_access
+    - attack.T1110
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4625
+    timeframe: 60s
+    condition: selection | count() by Source_Network_Address > 5
+falsepositives:
+    - Misconfigured applications
+    - Legitimate user forgot password
+level: medium

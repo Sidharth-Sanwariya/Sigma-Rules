@@ -1,0 +1,24 @@
+title: Service Stopped
+id: eee805bf-6b1d-4df3-b622-00337ed38979
+status: experimental
+description: Detects when a Windows service has been stopped (EventID 7036)
+references:
+     - https://attack.mitre.org/techniques/T1489/
+author: Sidharth
+date: 2026/04/28
+tags:
+     - attack.impact
+     - attack.T1489
+logsource:
+    product: windows
+    service: system
+detection:
+    selection:
+        Event: 7036
+        Message:
+           - 'stopped'
+    condition: selection
+falsepositives:
+      - Routine services restarts
+      - Software updates
+level: medium

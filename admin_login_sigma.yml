@@ -1,0 +1,22 @@
+title: Admin Login Dectected
+id: c6d60525-1100-4794-94c0-b731e01f7915
+status: experimental
+description: Dectects when a user logs in eith administrator privilages (EventID 4672)
+references:
+     -https://attack.mitre.org/techniques/T1078/
+author: Sidharth
+date: 2026/04/28
+tags:
+    - attack.privilege_escalation
+    - attack.T1078
+logsource:
+      product: windows
+      service: security
+detection:
+    selection:
+         Event: 4672
+     condition: selection
+falsepositives:
+      - Legitimate administrative tasks
+      - System maintenance
+level: high

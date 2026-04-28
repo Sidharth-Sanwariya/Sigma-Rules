@@ -1,0 +1,23 @@
+title: Failed Sudo Attempts
+id: 4177d1a4-ba97-482a-9f37-ca2fdba6ef73
+status: experimental
+description: Detects when a user fails to executes a command with sudo on linux
+references:
+      - https://attack.mitre.org/techniques/T1548/
+author: Sidharth
+date: 2026/04/28
+tags:
+    - attack.privilege_escalation
+    _ attack.T1548
+longsource:
+     product: Linux
+     service: auth
+detection:
+     keywords:
+         - 'sudo'
+         - 'FAILED'
+     condition: keywords
+falsepositives:
+    - User typing wrong password
+    - Misconfiguration sudoers files
+level: medium
